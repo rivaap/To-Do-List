@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.rishavverma.todobasicactivity.BasicActivity"
     tools:showIn="@layout/activity_basic"
-    android:background="@drawable/bg"
+
     >
 
     <ListView
