@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.rishavverma.todobasicactivity.ScrollingActivity"
+    tools:showIn="@layout/activity_scrolling">
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:text="Name"
+            android:textStyle="normal"
+            android:textSize="30sp"
+            android:layout_weight="1"
+            android:textColor="#616161"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:id="@+id/editText1"
+            android:textColor="#212121"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:text="Category"
+            android:textStyle="normal"
+            android:textSize="30sp"
+            android:layout_weight="1"
+            android:textColor="#616161"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:id="@+id/editText2"
+            android:textColor="#212121"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:text="Details"
+            android:textStyle="normal"
+            android:textSize="30sp"
+            android:layout_weight="1"
+            android:textColor="#616161"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:id="@+id/editText3"
+            android:textColor="#212121"
+            />
+
+
+
+        <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_weight="0.5"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:orientation="vertical"&ndash;&gt;-->
+            <!--&lt;!&ndash;&gt;&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_weight="2"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_margin="@dimen/text_margin">&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<DatePicker&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_weight="1"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<TimePicker&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_weight="1"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_weight="3"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:orientation="horizontal">&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/dateTextView"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="gh"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textAlignment="center"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/timeTextView"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="asdf"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textAlignment="center"/>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+
+
+
+    </LinearLayout>
+
+
+
+</android.support.v4.widget.NestedScrollView>

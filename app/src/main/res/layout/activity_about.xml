@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rishavverma.todobasicactivity.AboutActivity"
+    android:background="@drawable/bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="\n By "
+            android:textAlignment="center"
+            android:textColor="#bdbdbd"
+            android:textSize="30sp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rishav Verma \n\n"
+            android:textAlignment="center"
+            android:textColor="#fafafa"
+            android:textSize="40sp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="for queries: "
+            android:textAlignment="center"
+            android:textColor="#bdbdbd"
+            android:textSize="30sp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="rishavverma1996@gmail.com \n\n\n"
+            android:textAlignment="center"
+            android:textColor="#9fa8da"
+            android:textSize="30sp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thank You :)"
+            android:textAlignment="center"
+            android:textColor="#bdbdbd"
+            android:textSize="50sp"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

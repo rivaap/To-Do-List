@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.rishavverma.todobasicactivity">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon123"
+        android:label="Memo"
+        android:roundIcon="@drawable/icon123"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".BasicActivity"
+            android:label="Memo"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:icon="@drawable/icon123"
+            android:roundIcon="@drawable/icon123">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ScrollingActivity"
+            android:label="Info/Update"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:icon="@drawable/editicon"
+            android:roundIcon="@drawable/editicon"/>
+
+        <activity
+            android:name=".AboutActivity"
+            android:label = "About"
+            android:theme="@style/AppTheme" />
+        <!--</activity>-->
+    </application>
+
+</manifest>
