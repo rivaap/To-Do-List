@@ -11,10 +11,10 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".BasicActivity"
-            android:label="Memo"
-            android:theme="@style/AppTheme.NoActionBar"
             android:icon="@drawable/icon123"
-            android:roundIcon="@drawable/icon123">
+            android:label="Memo"
+            android:roundIcon="@drawable/icon123"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,16 +23,19 @@
         </activity>
         <activity
             android:name=".ScrollingActivity"
-            android:label="Info/Update"
-            android:theme="@style/AppTheme.NoActionBar"
             android:icon="@drawable/editicon"
-            android:roundIcon="@drawable/editicon"/>
-
+            android:label="Info/Update"
+            android:roundIcon="@drawable/editicon"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AboutActivity"
-            android:label = "About"
+            android:label="About"
             android:theme="@style/AppTheme" />
-        <!--</activity>-->
+        <!-- </activity> -->
+        <activity
+            android:name=".AddScrollingActivity"
+            android:label="Add"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

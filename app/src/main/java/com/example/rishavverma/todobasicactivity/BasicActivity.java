@@ -18,72 +18,56 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class BasicActivity extends AppCompatActivity {
 
-    //private final static long TO_EDIT_PAGE = 101;
-    int a=0;
-    long UID;
+
     ListView listView;
     ArrayList<Expense> dbData;
     CustomAdapter customAdapter;
-//    public String editWindowName;
-//    public String editWindowType;
-//    public String editWindowDetails;
-
-
-
-
 
     public void removeDataFromDBandList(int i) {
         DBOpenHelper dbOpenHelper = new DBOpenHelper(BasicActivity.this);
         SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
-
         database.delete(DBOpenHelper.TABLE_NAME, DBOpenHelper.ID + " = " + "\"" + dbData.get(i).id + "\"", null);
     }
 
-    public void addDataToDBandList(EditText addDialogEditText1,EditText addDialogEditText2,EditText addDialogEditText3)
-    {
-        DBOpenHelper dbOpenHelper = new DBOpenHelper(BasicActivity.this);
-        SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-
-        contentValues.put(DBOpenHelper.TABLE_COL1, addDialogEditText1.getText().toString());
-        contentValues.put(DBOpenHelper.TABLE_COL2, addDialogEditText2.getText().toString());
-        contentValues.put(DBOpenHelper.TABLE_COL3, addDialogEditText3.getText().toString());
-        UID = database.insert(DBOpenHelper.TABLE_NAME,null, contentValues);
-
-
-        Log.d("rTag", UID + "");
-
-    }
+//    public void addDataToDBandList(EditText addDialogEditText1, EditText addDialogEditText2, EditText addDialogEditText3)
+//    {
+//        DBOpenHelper dbOpenHelper = new DBOpenHelper(BasicActivity.this);
+//        SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put(DBOpenHelper.TABLE_COL1, addDialogEditText1.getText().toString());
+//        contentValues.put(DBOpenHelper.TABLE_COL2, addDialogEditText2.getText().toString());
+//        contentValues.put(DBOpenHelper.TABLE_COL3, addDialogEditText3.getText().toString());
+//        contentValues.put(DBOpenHelper.TABLE_COL4, dateTextView.getText().toString());
+//       contentValues.put(DBOpenHelper.TABLE_COL5, timeTextView.getText().toString());
+//        UID = database.insert(DBOpenHelper.TABLE_NAME,null, contentValues);
+//
+//        Log.d("rTag", UID + "");
+//    }
 
     public void showDBdataInList(ArrayList dbData) {
         DBOpenHelper dbOpenHelper = new DBOpenHelper(BasicActivity.this);
         SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
         Cursor cursor = database.query(DBOpenHelper.TABLE_NAME, null, null, null, null, null, null);
-        //String stringID = "";
-
         dbData.clear();
         while (cursor.moveToNext()) {
-
             long longID = cursor.getLong(cursor.getColumnIndex(DBOpenHelper.ID));
             String stringNAME = cursor.getString(cursor.getColumnIndex(DBOpenHelper.TABLE_COL1));
             String stringTYPE = cursor.getString(cursor.getColumnIndex(DBOpenHelper.TABLE_COL2));
             String stringDetails = cursor.getString(cursor.getColumnIndex(DBOpenHelper.TABLE_COL3));
-            Expense e = new Expense(longID,stringNAME,stringTYPE,stringDetails);
-
+            String stringDate = cursor.getString(cursor.getColumnIndex(DBOpenHelper.TABLE_COL4));
+            String stringTime = cursor.getString(cursor.getColumnIndex(DBOpenHelper.TABLE_COL5));
+            Expense e = new Expense(longID,stringNAME,stringTYPE,stringDetails,stringDate,stringTime);
+            //
             dbData.add(e);
-
-
         }
-
     }
-
-
 
 
     @Override
@@ -93,78 +77,82 @@ public class BasicActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
         listView = (ListView) findViewById(R.id.listView1);
         dbData = new ArrayList<>();
-
         customAdapter = new CustomAdapter(this, dbData);
         listView.setAdapter(customAdapter);
 
-
         showDBdataInList(dbData);
         customAdapter.notifyDataSetChanged();
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(BasicActivity.this);
-                builder.setTitle("Planning is required for Efficiency");
-                builder.setCancelable(false);
-                final View v = getLayoutInflater().inflate(R.layout.add_dialog_box,null);
-                builder.setView(v);
+//                long id = dbData.size();
+//                Bundle bundle = new Bundle();
+//                bundle.putLong("ID",id);
+                Intent intent = new Intent(BasicActivity.this, AddScrollingActivity.class);
+               // intent.putExtras(bundle);
+                startActivity(intent);
 
-                final EditText addDialogEditText1 = (EditText) v.findViewById(R.id.addDialogEditText1);
-                final EditText addDialogEditText2 = (EditText) v.findViewById(R.id.addDialogEditText2);
-                final EditText addDialogEditText3 = (EditText) v.findViewById(R.id.addDialogEditText3);
-
-                builder.setPositiveButton("add", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                        if(!(addDialogEditText1.getText().toString().isEmpty() && addDialogEditText2.getText().toString().
-                                isEmpty() && addDialogEditText3.getText().toString().isEmpty()))
-                        {
-
-                            addDataToDBandList(addDialogEditText1,addDialogEditText2,addDialogEditText3);
-                            addDialogEditText1.setText("");
-                            addDialogEditText2.setText("");
-                            addDialogEditText3.setText("");
-                            Log.d("rTag",  "");
-                            Log.d("rTag", UID + "");
-                            Snackbar.make(view, "Added", Snackbar.LENGTH_SHORT)
-                              .setAction("Action", null).show();
-
-                        }
-                        else{
-                            Snackbar.make(view, "WTF Bruh..!", Snackbar.LENGTH_SHORT)
-                             .setAction("Action", null).show();
-                        }
-                        Log.d("rTag",  "here");
-                        showDBdataInList(dbData);
-                        customAdapter.notifyDataSetChanged();
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
-
-
-//                Intent intent = new Intent(BasicActivity.this,ScrollingActivity.class);
-//                startActivity(intent);
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                       // .setAction("Action", null).show();
+//                AlertDialog.Builder builder = new AlertDialog.Builder(BasicActivity.this);
+//                builder.setTitle("Planning is required for Efficiency");
+//                builder.setCancelable(false);
+//                final View v = getLayoutInflater().inflate(R.layout.add_dialog_box,null);
+//                builder.setView(v);
+//
+//                final EditText addDialogEditText1 = (EditText) v.findViewById(R.id.addDialogEditText1);
+//                final EditText addDialogEditText2 = (EditText) v.findViewById(R.id.addDialogEditText2);
+//                final EditText addDialogEditText3 = (EditText) v.findViewById(R.id.addDialogEditText3);
+////                final TextView dateTextView = (TextView) v.findViewById(R.id.dateTextView);
+////                final TextView timeTextView = (TextView) v.findViewById(R.id.timeTextView);
+//
+//                builder.setPositiveButton("add", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                        if(!(addDialogEditText1.getText().toString().isEmpty() && addDialogEditText2.getText().toString().
+//                                isEmpty() && addDialogEditText3.getText().toString().isEmpty()))
+//                        {
+//
+//                            addDataToDBandList(addDialogEditText1,addDialogEditText2,addDialogEditText3);
+//                            addDialogEditText1.setText("");
+//                            addDialogEditText2.setText("");
+//                            addDialogEditText3.setText("");
+////                            dateTextView.setText("");
+////                            timeTextView.setText("");
+//                            Log.d("rTag",  "");
+//                            Log.d("rTag", UID + "");
+//                            Snackbar.make(view, "Added", Snackbar.LENGTH_SHORT)
+//                              .setAction("Action", null).show();
+//
+//                        }
+//                        else{
+//                            Snackbar.make(view, "WTF Bruh..!", Snackbar.LENGTH_SHORT)
+//                             .setAction("Action", null).show();
+//                        }
+//                        Log.d("rTag",  "here");
+//                        showDBdataInList(dbData);
+//                        customAdapter.notifyDataSetChanged();
+//                    }
+//                });
+//                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        dialogInterface.dismiss();
+//                    }
+//                });
+//                AlertDialog dialog = builder.create();
+//                dialog.show();
+//
+//
+////                Intent intent = new Intent(BasicActivity.this,ScrollingActivity.class);
+////                startActivity(intent);
+//                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                       // .setAction("Action", null).show();
             }
-
-
 
 
         });
@@ -173,17 +161,24 @@ public class BasicActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+
+
                 Expense e = dbData.get(i);
 
                 String editWindowName = e.name;
                 String editWindowType = e.type;
                 String editWindowDetails = e.details;
                 long id = dbData.get(i).id;
+                String editWindowDate = e.date;
+                String editWindowTime = e.time;
+
                 Bundle bundle = new Bundle();
                 bundle.putString("editWindowNameKey",editWindowName);
                 bundle.putString("editWindowTypeKey",editWindowType);
                 bundle.putString("editWindowDetailsKey",editWindowDetails);
                 bundle.putLong("ID",id);
+                bundle.putString("editWindowDateKey",editWindowDate);
+                bundle.putString("editWindowTimeKey", editWindowTime);
                 Intent intent = new Intent(BasicActivity.this, ScrollingActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);

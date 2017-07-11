@@ -16,6 +16,9 @@ public class DBOpenHelper extends SQLiteOpenHelper{
     final static String TABLE_COL2 = "type";
     final static String TABLE_COL3 = "details";
     final static String DBNAME = "database.db";
+    final static String TABLE_COL4="date";
+    final static String TABLE_COL5="time";
+
 
     public DBOpenHelper(Context context) {
         super(context, DBNAME, null, 1);
@@ -23,7 +26,7 @@ public class DBOpenHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String query = "create table "+TABLE_NAME+ " ( "+ID+" integer primary key autoincrement, "+TABLE_COL1+" text, "+TABLE_COL2+" text, "+TABLE_COL3+" text);";
+        String query = "create table "+TABLE_NAME+ " ( "+ID+" integer primary key autoincrement, "+TABLE_COL1+" text, "+TABLE_COL2+" text, "+TABLE_COL3+" text, "+TABLE_COL4+" text, "+TABLE_COL5+" text);";
 
         sqLiteDatabase.execSQL(query);
     }

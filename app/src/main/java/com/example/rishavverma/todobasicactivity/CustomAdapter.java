@@ -38,12 +38,17 @@ public class CustomAdapter extends ArrayAdapter<Expense> {
         TextView name;
         TextView price;
         TextView type;
+        TextView date;
+        TextView time;
+
         //long id;
-        ExpenseViewHolder(TextView name, TextView type, TextView price)
+        ExpenseViewHolder(TextView name, TextView type, TextView date )
         {
             this.name = name;
             this.type = type;
-            this.price = price;
+
+            this.date=date;
+            //this.time=time;
             //this.id = id;
         }
     }
@@ -57,16 +62,18 @@ public class CustomAdapter extends ArrayAdapter<Expense> {
             convertView = LayoutInflater.from(context).inflate(R.layout.custom_list,null);
             TextView customName = (TextView) convertView.findViewById(R.id.customName);
             TextView customType = (TextView) convertView.findViewById(R.id.customType);
-            TextView customDetails = (TextView) convertView.findViewById(R.id.customDetails);
+            TextView customDate = (TextView) convertView.findViewById(R.id.customDetails);
 
-            ExpenseViewHolder expenseViewHolder = new ExpenseViewHolder(customName,customType,customDetails);
+
+
+            ExpenseViewHolder expenseViewHolder = new ExpenseViewHolder(customName,customType,customDate);
             convertView.setTag(expenseViewHolder);
         }
         Expense e = expenseArrayList.get(position);
         ExpenseViewHolder expenseViewHolder = (ExpenseViewHolder)convertView.getTag();
         expenseViewHolder.name.setText(e.name);
         expenseViewHolder.type.setText(e.type);
-        expenseViewHolder.price.setText(e.details);
+        expenseViewHolder.date.setText(e.date);
 
         return convertView;
     }

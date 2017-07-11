@@ -7,16 +7,49 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.rishavverma.todobasicactivity.BasicActivity"
     tools:showIn="@layout/activity_basic"
+    android:orientation="vertical"
 
     >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="20"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Title"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_weight="1.1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="category"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_weight="1.5"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Date"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_weight="1.7"/>
+
+
+    </LinearLayout>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listView1"
         android:layout_weight="1"
+        />
 
-       />
 
 
 
